@@ -1115,6 +1115,12 @@ class OpenWeatherMenuButton extends PanelMenu.Button {
         temperature = this.toNewton(temperature);
         break;
     }
+    /* 
+     * Remove minus if temp is 0 since it's not a negative number.
+     * It's likely not the best way to do it, but it works.
+     */
+    if (temperature == "-0")
+      temperature = "0";
     return (
       parseFloat(temperature)
         .toLocaleString(this.locale)
